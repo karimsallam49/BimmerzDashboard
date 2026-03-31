@@ -1,0 +1,243 @@
+/* Noon Inspired Theme for Add Product Modal (Refined) */
+
+.noon-modal .modal-content {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  font-family: 'Proxima Nova', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  overflow: hidden;
+}
+
+.noon-modal .modal-header {
+  border-bottom: 1px solid #f2f2f5;
+  padding: 24px 32px 20px;
+  background-color: #ffffff;
+}
+
+.noon-modal .modal-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #404553;
+  margin: 0;
+  letter-spacing: -0.3px;
+}
+
+.noon-modal .modal-header .btn-close {
+  opacity: 0.4;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.noon-modal .modal-header .btn-close:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.noon-modal .modal-body {
+  padding: 24px 32px;
+  background-color: #ffffff;
+}
+
+.noon-modal .form-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #404553;
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+
+.noon-modal .form-control,
+.noon-modal .form-select {
+  border: 1px solid #e2e5f1;
+  border-radius: 6px;
+  padding: 12px 16px;
+  font-size: 14px;
+  color: #404553;
+  box-shadow: none;
+  background-color: #fcfcfd;
+  transition: all 0.2s ease;
+  height: auto;
+}
+
+.noon-modal .form-control:hover,
+.noon-modal .form-select:hover {
+  background-color: #ffffff;
+  border-color: #d4d6df;
+}
+
+.noon-modal .form-control:focus,
+.noon-modal .form-select:focus {
+  background-color: #ffffff;
+  border-color: #3866df;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(56, 102, 223, 0.1);
+}
+
+.noon-modal .form-control:disabled,
+.noon-modal .form-control[readonly] {
+  background-color: #f2f2f5;
+  color: #7e859b;
+  border-color: #e2e5f1;
+}
+
+.noon-modal .modal-footer {
+  border-top: 1px solid #f2f2f5;
+  padding: 20px 32px;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.noon-modal .btn-secondary {
+  background-color: #ffffff;
+  color: #404553;
+  border: 1px solid #d4d6df;
+  font-weight: 600;
+  padding: 12px 28px;
+  border-radius: 6px;
+  transition: all 0.2s;
+  font-size: 14px;
+}
+
+.noon-modal .btn-secondary:hover:not(:disabled) {
+  background-color: #f7f7fa;
+  color: #404553;
+  border-color: #404553;
+}
+
+.noon-modal .btn-primary {
+  background-color: #fce000;
+  color: #404553;
+  border: none;
+  font-weight: 600;
+  padding: 12px 28px;
+  border-radius: 6px;
+  transition: all 0.2s;
+  font-size: 14px;
+  box-shadow: 0 2px 4px rgba(252, 224, 0, 0.2);
+}
+
+.noon-modal .btn-primary:hover:not(:disabled) {
+  background-color: #f2d600;
+  color: #000000;
+  box-shadow: 0 4px 8px rgba(252, 224, 0, 0.3);
+  transform: translateY(-1px);
+}
+
+.noon-modal .btn-primary:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.noon-modal .btn-primary:disabled {
+  background-color: #f2f2f5;
+  color: #7e859b;
+  opacity: 1;
+  box-shadow: none;
+}
+
+/* Spinner styling */
+.noon-modal .spinner-border {
+  color: #404553 !important;
+}
+
+/* Multi-column rows */
+.noon-modal .form-row {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.noon-modal .form-row .form-group {
+  flex: 1;
+  margin-bottom: 0 !important;
+}
+
+/* Compatibility Grid Styles */
+.compatibility-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.compatibility-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #ffffff;
+  border: 1px solid #e2e5f1;
+  border-radius: 8px;
+  padding: 12px;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(40,41,61,0.04);
+}
+
+.compatibility-card:hover {
+  border-color: #3866df;
+  box-shadow: 0 4px 12px rgba(56, 102, 223, 0.1);
+  transform: translateY(-2px);
+}
+
+.compatibility-icon-wrapper {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  background-color: #f7f7fa;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid #f2f2f5;
+  padding: 4px;
+}
+
+.compatibility-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.compatibility-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex-grow: 1;
+}
+
+.compatibility-brand-model {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.comp-brand {
+  font-size: 13px;
+  color: #7e859b;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.comp-model {
+  font-size: 15px;
+  font-weight: 700;
+  color: #404553;
+}
+
+.compatibility-years {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #7e859b;
+  font-weight: 600;
+  background: #f7f7fa;
+  padding: 2px 8px;
+  border-radius: 4px;
+  width: fit-content;
+  border: 1px solid #e2e5f1;
+}
+
+.compatibility-years i {
+  font-size: 11px;
+}

@@ -1,0 +1,201 @@
+.promotions-dashboard {
+  background: linear-gradient(135deg, #fefce8 0%, #e2e8f0 100%);
+  min-height: calc(100vh - 64px);
+  padding: 32px 40px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Banner */
+.promo-banner {
+  background: linear-gradient(90deg, #305496 0%, #0f172a 100%);
+  border-radius: 12px;
+  padding: 24px 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  color: white;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.promo-banner-content h1 {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  letter-spacing: -0.5px;
+}
+
+.promo-banner-content p {
+  font-size: 13px;
+  opacity: 0.9;
+  margin: 0;
+}
+
+.btn-enroll {
+  background-color: #f59e0b;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.2s;
+}
+.btn-enroll:hover {
+  background-color: #d97706;
+}
+.btn-enroll svg {
+  stroke: white;
+  margin-left: 6px;
+}
+
+/* Grid Layout */
+.promo-grid {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.promo-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Cards */
+.promo-card {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  overflow: hidden;
+}
+
+.promo-card-header-main {
+  padding: 20px 20px 12px;
+}
+
+.promo-card-header-main h2 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+}
+
+.promo-item {
+  padding: 16px 20px 20px;
+}
+
+.promo-item.border-top {
+  border-top: 1px solid #f3f4f6;
+}
+
+.promo-item.pad-top {
+  padding-top: 20px;
+}
+
+.promo-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.promo-item-header h3 {
+  font-size: 15px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.promo-item-header h3:hover svg {
+  stroke: #111827;
+}
+
+.badge-count {
+  background: #f3f4f6;
+  color: #9ca3af;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 12px;
+}
+
+.promo-item p {
+  font-size: 12px;
+  color: #6b7280;
+  margin: 0 0 12px 0;
+  line-height: 1.4;
+}
+
+/* Status Badges */
+.badge-green {
+  display: inline-block;
+  background: #dcfce7;
+  color: #16a34a;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.badge-yellow {
+  display: inline-block;
+  background: #fef9c3;
+  color: #eab308;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.badge-yellow-light {
+  display: inline-block;
+  background: #fefce8;
+  color: #d97706;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+.badge-blue {
+  display: inline-block;
+  background: #dbeafe;
+  color: #3b82f6;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+/* noon Co-funded Card Special Styles */
+.noon-co-funded-card {
+  border: 1px solid #fde047;
+}
+
+.noon-co-funded-header {
+  background: #fde047;
+  padding: 12px 20px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #111827;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.noon-logo-mock {
+  font-family: Arial, sans-serif;
+  font-weight: 800;
+  font-size: 16px;
+  letter-spacing: 0;
+  text-transform: lowercase;
+}

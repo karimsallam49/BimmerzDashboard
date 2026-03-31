@@ -1,0 +1,151 @@
+.dashboard-page{
+background:#f6f7fb;
+min-height:100vh;
+padding:25px;
+font-family:system-ui;
+}
+
+
+.dashboard-alert{
+background:white;
+padding:14px 18px;
+border-radius:8px;
+margin-bottom:12px;
+font-size:14px;
+display:flex;
+justify-content:space-between;
+}
+
+.dashboard-alert.warning{
+border-left:4px solid #f59e0b;
+}
+
+.dashboard-alert.info{
+border-left:4px solid #3b82f6;
+}
+
+.dashboard-alert a{
+margin-left:10px;
+color:#3b82f6;
+font-weight:600;
+text-decoration:none;
+}
+
+
+.dashboard-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin:25px 0 15px;
+}
+
+.dashboard-actions{
+display:flex;
+gap:10px;
+}
+
+.dashboard-actions input{
+border:1px solid #ddd;
+padding:8px 12px;
+border-radius:6px;
+width:240px;
+background: white;
+}
+
+.dashboard-actions button{
+border:1px solid #ddd;
+padding:8px 14px;
+border-radius:6px;
+cursor:pointer;
+}
+
+.dashboard-actions button:hover{
+background:#f2f3f7;
+}
+
+
+.dashboard-tabs{
+display:flex;
+gap:20px;
+border-bottom:1px solid #e5e7eb;
+margin-bottom:20px;
+}
+
+.dashboard-tabs button{
+border:none;
+background:none;
+cursor:pointer;
+color:#777;
+font-weight:500;
+margin: 10px 0;
+}
+
+.dashboard-tabs button.active{
+color:white;
+background-color: #3b82f6;
+padding: .5rem;
+
+}
+
+
+.dashboard-card{
+background:white;
+border-radius:10px;
+box-shadow:0 2px 8px rgba(0,0,0,0.05);
+overflow:hidden;
+}
+
+.dashboard-card-header{
+display:flex;
+justify-content:space-between;
+padding:14px 18px;
+border-bottom:1px solid #eee;
+font-size:14px;
+}
+
+
+.dashboard-table table{
+width:100%;
+border-collapse:collapse;
+}
+
+.dashboard-table th{
+text-align:left;
+font-size:13px;
+color:#888;
+padding:12px 18px;
+}
+
+.dashboard-table td{
+padding:14px 18px;
+border-top:1px solid #f1f1f1;
+font-size:14px;
+}
+
+.dashboard-table tr:hover{
+background:#fafafa;
+}
+
+
+.status{
+padding:4px 10px;
+border-radius:20px;
+font-size:12px;
+font-weight:600;
+}
+
+.status.pending{
+background:#fff7ed;
+color:#ea580c;
+}
+
+.status.completed{
+background:#ecfdf5;
+color:#059669;
+}
+
+.empty{
+text-align:center;
+padding:40px;
+color:#999;
+}

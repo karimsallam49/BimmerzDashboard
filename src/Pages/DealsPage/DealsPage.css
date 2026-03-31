@@ -1,0 +1,340 @@
+.deals-page-container {
+  background-color: #f3f4f6;
+  min-height: calc(100vh - 64px);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Header */
+.deals-header {
+  background-color: #ffffff;
+  padding: 24px 32px 16px;
+}
+
+.deals-header h1 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #111827;
+  margin: 0;
+}
+
+/* Tabs */
+.deals-tabs-container {
+  background-color: #ffffff;
+  padding: 0 32px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.deals-tabs {
+  display: flex;
+  gap: 24px;
+}
+
+.tab-btn {
+  background: none;
+  border: none;
+  padding: 16px 4px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #4b5563;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tab-btn:hover {
+  color: #111827;
+}
+
+.tab-btn.active {
+  color: #3b82f6;
+}
+
+.tab-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background-color: #3b82f6;
+  border-radius: 3px 3px 0 0;
+}
+
+.tab-badge-new {
+  background-color: #ec4899;
+  color: white;
+  font-size: 9px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  position: relative;
+  top: -8px;
+}
+
+.about-deals-btn {
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+/* Main Content Area */
+.deals-content {
+  padding: 24px 32px;
+}
+
+.deals-table-container {
+  background: #ffffff;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  padding: 20px 0;
+  margin-top: -12px; /* Overlap slightly visually if needed or just straight margin */
+}
+
+/* Filters */
+.deals-filters {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-bottom: none;
+  border-radius: 8px 8px 0 0;
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search-input-wrapper {
+  display: flex;
+  align-items: center;
+  border: 1px solid #e5e7eb;
+  border-radius: 20px;
+  width: 340px;
+  height: 40px;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.search-input-wrapper input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  padding: 0 16px;
+  font-size: 14px;
+  color: #111827;
+  outline: none;
+}
+.search-input-wrapper input::placeholder {
+  color: #9ca3af; 
+}
+
+.search-icon-wrapper {
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f9fafb;
+  border-left: 1px solid #e5e7eb;
+  height: 100%;
+}
+
+.filter-dropdowns {
+  display: flex;
+  gap: 12px;
+}
+
+.dropdown-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+  cursor: pointer;
+  height: 40px;
+}
+
+.dropdown-btn.disabled {
+  background: #f9fafb;
+  color: #d1d5db;
+  cursor: not-allowed;
+}
+
+/* Table */
+.deals-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.deals-table th {
+  text-align: left;
+  padding: 12px 24px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #4b5563;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.deals-table td {
+  padding: 16px 24px;
+  border-bottom: 1px solid #f3f4f6;
+  vertical-align: middle;
+}
+
+.deal-name-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.deal-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: #111827;
+}
+.deal-subtitle {
+  font-size: 13px;
+  color: #9ca3af;
+}
+
+.running-date-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.date-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #374151;
+}
+.time-row {
+  display: flex;
+  gap: 26px; /* spacing to align nicely under dates */
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+/* Status Badges */
+.status-badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.status-badge.ongoing {
+  background-color: #e0e7ff; /* light blue */
+  color: #4f46e5;
+}
+.status-badge.upcoming {
+  background-color: #fef3c7; /* light yellow */
+  color: #d97706;
+}
+
+/* Action button */
+.action-cell {
+  text-align: right;
+}
+.btn-enroll {
+  background-color: #1d4ed8;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 8px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.btn-enroll:hover {
+  background-color: #1e40af;
+}
+
+/* Table Footer */
+.table-footer {
+  display: flex;
+  align-items: center;
+  padding: 16px 24px 0;
+  gap: 24px;
+}
+
+.total-items {
+  font-size: 13px;
+  font-weight: 500;
+  color: #4b5563;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.page-nav {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  color: #9ca3af;
+}
+.page-nav.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.page-num {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  color: #3b82f6;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 4px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* Side Tab (Rate this page) */
+.rate-page-tab {
+  position: absolute;
+  right: -42px;
+  top: 300px;
+  background-color: #ec4899;
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 8px 8px 0 0;
+  transform: rotate(-90deg);
+  transform-origin: bottom left;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  box-shadow: -2px 0 8px rgba(0,0,0,0.1);
+}
+.rate-page-tab .star-icon {
+  font-size: 16px;
+}

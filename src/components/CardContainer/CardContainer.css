@@ -1,0 +1,20 @@
+.card-container {
+  border: 1px solid #dee2e6;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.card-container-header {
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #dee2e6;
+  padding: 1rem;
+}
+
+.card-title {
+  font-weight: 600;
+  color: #212529;
+}
+
+.header-actions {
+  display: flex;
+  gap: 0.5rem;
+}

@@ -1,0 +1,37 @@
+/* Catalog Page Styles */
+
+.condition-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 20px;
+  letter-spacing: 0.3px;
+  text-transform: capitalize;
+}
+
+.condition-inreview {
+  background-color: #fffbdf;
+  color: #db8a00;
+  border: 1px solid #ffeba4;
+}
+
+.condition-active, .condition-approved {
+  background-color: #e5f9ed;
+  color: #0b934b;
+  border: 1px solid #a3e8c0;
+}
+
+.condition-inactive, .condition-rejected {
+  background-color: #fcebeb;
+  color: #d71920;
+  border: 1px solid #f9cdcd;
+}
+
+.condition-default {
+  background-color: #f7f7fa;
+  color: #7e859b;
+  border: 1px solid #e2e5f1;
+}

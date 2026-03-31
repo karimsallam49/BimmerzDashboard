@@ -1,0 +1,78 @@
+.kpi-card {
+  background: #fff;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  border: 1px solid #e5e7eb;
+}
+
+.kpi-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.kpi-card-title {
+  font-size: 0.875rem;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.kpi-card-icon {
+  color: #9ca3af;
+}
+
+.kpi-card-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 0.5rem;
+}
+
+.kpi-card-small .kpi-card-value {
+  font-size: 1.25rem;
+}
+
+.kpi-card-large .kpi-card-value {
+  font-size: 2rem;
+}
+
+.kpi-card-subtitle {
+  font-size: 0.75rem;
+  color: #6b7280;
+  margin-bottom: 0.5rem;
+}
+
+.kpi-card-trend {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.5rem;
+  border-radius: 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.kpi-card-trend.positive {
+  background: #d1fae5;
+  color: #059669;
+}
+
+.kpi-card-trend.negative {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.kpi-card-footer {
+  font-size: 0.75rem;
+  color: #9ca3af;
+  margin-top: auto;
+  padding-top: 0.75rem;
+}
+
+/* KpiPanel for dashboard layout */
+.kpi-panel {
+  background: #fff;
+  border-radius: 0.75rem;
+  border: 1px solid #e5e7eb;
+  overflow: hidden;
+}

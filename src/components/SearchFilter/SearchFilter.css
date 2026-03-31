@@ -1,0 +1,15 @@
+.search-filter-container {
+  background: #fff;
+  padding: 1rem;
+  border-radius: 0.375rem;
+  border: 1px solid #dee2e6;
+}
+
+.filter-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #7e859b;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}

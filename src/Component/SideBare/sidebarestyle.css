@@ -1,0 +1,144 @@
+.sidebar-container{
+  width:260px;
+  height:100vh;
+  background:#ffffff;
+  border-right:1px solid #eee;
+  display:flex;
+  flex-direction:column;
+}
+
+.sidebar-logo{
+  padding:5px;
+  font-weight:700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size:18px;
+  border-bottom:1px solid #eee;
+}
+
+.sidebar-user{
+  padding:15px 20px;
+  border-bottom:1px solid #f3f3f3;
+}
+
+.sidebar-user small{
+  color:#888;
+}
+
+.sidebar-user p{
+  margin:0;
+  font-weight:600;
+}
+
+.sidebar-menu{
+  padding:10px 0;
+}
+
+.sidebar-item{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:12px 20px;
+  cursor:pointer;
+  color:#333;
+  transition:0.2s;
+}
+
+.sidebar-item i{
+  font-size:18px;
+}
+
+.sidebar-item:hover{
+  background:#f7f7f7;
+}
+
+.sidebar-item.active{
+  background:#f6f7fb;
+  font-weight:600;
+  padding: 1rem;
+  position: relative;
+}
+.sidebar-item.active ::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: #3b82f6;
+}
+
+.sidebar-logout{
+  padding:20px;
+}
+
+.sidebar-logout button{
+  width:100%;
+  border:none;
+  background:#757373;
+  padding:10px;
+  border-radius:8px;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+}
+
+.sidebar-logout button:hover{
+  background:#e5e5e5;
+}
+
+.sidebar-container.collapsed {
+  width: 60px;
+}
+
+.sidebar-item{
+display:flex;
+align-items:center;
+padding:10px 14px;
+cursor:pointer;
+}
+
+
+.sidebar-item i {
+  font-size: 18px;
+  margin-right: 10px;
+}
+
+.sidebar-container.collapsed .sidebar-item i {
+  margin-right: 0; 
+}
+
+.sidebar-item span {
+  transition: opacity 0.3s;
+}
+
+.sidebar-container.collapsed .sidebar-item span {
+  display: none;
+}
+
+.submenu {
+  padding-left: 20px;
+  transition: all 0.3s;
+}
+
+.submenu-item {
+  font-size: 0.9rem;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.submenu-item:hover {
+  background-color: rgba(0,0,0,0.05);
+}
+.sidebar-count {
+background:#ff3b30;
+color:#fff;
+font-size:12px;
+padding:2px 8px;
+border-radius:20px;
+margin-left:auto;
+}

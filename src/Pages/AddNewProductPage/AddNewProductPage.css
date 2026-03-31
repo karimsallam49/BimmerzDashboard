@@ -1,0 +1,36 @@
+.add-new-product-container {
+  padding: 20px;
+}
+
+.form-card {
+  margin-top: 20px;
+  border: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+  color: #333;
+  font-weight: 600;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 8px;
+  margin-top: 20px;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.form-label {
+  font-weight: 500;
+  color: #555;
+}
+
+textarea.form-control {
+  resize: vertical;
+}
+
+.d-flex.gap-2 {
+  gap: 10px;
+}

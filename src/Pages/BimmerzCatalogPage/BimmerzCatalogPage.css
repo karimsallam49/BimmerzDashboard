@@ -1,0 +1,130 @@
+.bimmerz-catalog-container {
+  background-color: #f8f9fa;
+  min-height: calc(100vh - 64px);
+  padding: 32px 40px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.bimmerz-catalog-content {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.catalog-header-text {
+  font-size: 13px;
+  font-weight: 500;
+  color: #4b5563;
+  margin: 0 0 16px 0;
+}
+
+/* Filters Bar */
+.catalog-filters-bar {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px 24px;
+  display: flex;
+  gap: 24px;
+  align-items: flex-end;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.filter-group label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  border: 1px solid #e5e7eb;
+  border-radius: 20px;
+  height: 40px;
+  background: #ffffff;
+  overflow: hidden;
+  position: relative;
+}
+
+.input-wrapper input {
+  border: none;
+  background: transparent;
+  padding: 0 16px;
+  font-size: 13px;
+  color: #111827;
+  outline: none;
+  width: 100%;
+}
+
+.input-wrapper input::placeholder {
+  color: #9ca3af;
+}
+
+.icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 100%;
+  border-left: 1px solid #e5e7eb;
+  background: #f9fafb;
+  flex-shrink: 0;
+}
+
+.select-wrapper .icon-container {
+  border-left: none;
+  background: transparent;
+}
+
+.select-wrapper input {
+  cursor: pointer;
+}
+
+/* Disabled/Grayed out states */
+.disabled {
+  background-color: #f9fafb;
+}
+
+.disabled input {
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+
+/* Sizing exactly matching image */
+.sku-group { flex: 0 0 280px; }
+.brand-group { flex: 0 0 220px; }
+.generic-group { flex: 1; min-width: 180px; } /* Product Family, Type, Subtype take remaining equal space */
+
+
+/* Empty State */
+.catalog-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 120px 0;
+}
+
+.empty-icon-wrapper {
+  margin-bottom: 24px;
+}
+
+.catalog-empty-state h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #6b7280;
+  margin: 0 0 8px 0;
+}
+
+.catalog-empty-state p {
+  font-size: 14px;
+  font-weight: 400;
+  color: #9ca3af;
+  margin: 0;
+}

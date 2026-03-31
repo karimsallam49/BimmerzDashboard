@@ -1,0 +1,18 @@
+.edit-modal .modal-content {
+  border: none;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.edit-modal .modal-header {
+  background: #f8f9fa;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.edit-modal .modal-title {
+  font-weight: 600;
+  color: #212529;
+}
+
+.edit-modal .modal-footer {
+  border-top: 1px solid #e9ecef;
+}

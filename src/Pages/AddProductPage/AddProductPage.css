@@ -1,0 +1,181 @@
+/* Noon Inspired Theme for Add Product Page */
+
+.add-product-container {
+  background-color: #f7f7fa;
+  min-height: calc(100vh - 64px);
+  padding: 30px 40px;
+  font-family: 'Proxima Nova', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Page Header Override */
+.add-product-container .page-header {
+  margin-bottom: 5px !important;
+}
+
+.add-product-container .page-header .page-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #404553;
+  margin: 0;
+  letter-spacing: -0.3px;
+}
+
+.add-product-container .page-header .page-subtitle {
+  font-size: 14px;
+  color: #7e859b !important;
+  margin-top: 4px;
+  font-weight: 400;
+}
+
+/* Search Filter Area */
+.add-product-container .search-filter-container {
+  background: #ffffff;
+  padding: 24px;
+  border-radius: 4px;
+  border: 1px solid #e2e5f1;
+  box-shadow: 0 2px 4px rgba(40,41,61,0.04), 0 8px 16px rgba(96,97,112,0.04);
+  margin-bottom: 0 !important;
+}
+
+.add-product-container .search-filter-container .form-control,
+.add-product-container .search-filter-container .form-select {
+  border: 1px solid #d4d6df;
+  border-radius: 4px;
+  padding: 10px 14px;
+  font-size: 14px;
+  color: #404553;
+  box-shadow: none;
+  background-color: #ffffff;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  height: 44px;
+}
+
+.add-product-container .search-filter-container .form-control:focus,
+.add-product-container .search-filter-container .form-select:focus {
+  border-color: #3866df;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(56, 102, 223, 0.1);
+}
+
+.add-product-container .search-filter-container .input-group .btn {
+  border: 1px solid #d4d6df;
+  background: #f7f7fa;
+  color: #7e859b;
+  border-left: none;
+  transition: all 0.2s;
+}
+
+.add-product-container .search-filter-container .input-group .btn:hover {
+  background: #e2e5f1;
+  color: #404553;
+}
+
+/* Card Container */
+.add-product-container .card-container {
+  background: #ffffff;
+  border-radius: 4px;
+  border: 1px solid #e2e5f1;
+  box-shadow: 0 2px 4px rgba(40,41,61,0.04), 0 8px 16px rgba(96,97,112,0.04);
+  overflow: hidden;
+  border-top: 3px solid #fce000; /* Noon yellow accent */
+}
+
+.add-product-container .card-container .card-body {
+  padding: 0 !important;
+}
+
+.add-product-container .card-container-header {
+  background: #ffffff;
+  border-bottom: 1px solid #e2e5f1;
+  padding: 16px 24px;
+}
+
+.add-product-container .card-container-header .card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #404553;
+}
+
+/* Table Override */
+.add-product-container .data-table-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.add-product-container .table {
+  margin-bottom: 0;
+  border-collapse: separate;
+  border-spacing: 0;
+  width: 100%;
+}
+
+.add-product-container .table thead th {
+  background-color: #f7f7fa;
+  color: #7e859b;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 16px 24px;
+  border-bottom: 1px solid #e2e5f1;
+  border-top: none;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.add-product-container .table tbody td {
+  padding: 16px 24px;
+  font-size: 14px;
+  color: #404553;
+  border-bottom: 1px solid #f2f2f5;
+  vertical-align: middle;
+}
+
+.add-product-container .table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.add-product-container .table tbody tr {
+  transition: background-color 0.2s, transform 0.2s;
+}
+
+.add-product-container .table tbody tr:hover {
+  background-color: #fcfcfd;
+  cursor: pointer;
+  box-shadow: inset 3px 0 0 #fce000;
+}
+
+/* Table Text Overrides */
+.add-product-container .fw-bold {
+  color: #3866df;
+  font-weight: 600 !important;
+  text-decoration: none;
+}
+
+.add-product-container .fw-bold:hover {
+  text-decoration: underline;
+}
+
+/* Specific button styles if they exist or get added */
+.add-product-container .btn-primary {
+  background-color: #fce000;
+  color: #404553;
+  border: none;
+  font-weight: 600;
+  padding: 10px 24px;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.add-product-container .btn-primary:hover {
+  background-color: #f2d600;
+  color: #000000;
+}
+
+/* Loading state */
+.add-product-container p {
+  color: #7e859b;
+  font-size: 14px;
+}
