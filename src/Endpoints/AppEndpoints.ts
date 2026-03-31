@@ -19,3 +19,7 @@ export const GetBrandsEndpoint = `${APIBaseURl}/api/vendors/product-by-vendor/ge
 export const GetYearsEndpoint = `${APIBaseURl}/api/vendors/product-by-vendor/get_years`;
 export const GetCategoriesEndpoint = `${APIBaseURl}/api/vendors/product-by-vendor/get_categories`;
 export const GetUnitsEndpoint = `${APIBaseURl}/api/vendors/product-by-vendor/get_units`;
+
+export const ProductsByCategoryEndpoint = (categoryId: number) => `${APIBaseURl}/api/vendors/product-by-vendor/ProductByCategory/${categoryId}`;
+export const EcomProductByIdEndpoint = (id: number) => `${APIBaseURl}/api/vendors/product-by-vendor/ecom-product/${id}`;
+export const SubcategoriesByCategoryEndpoint = (categoryId: number) => `${APIBaseURl}/api/vendors/product-by-vendor/${categoryId}/subcategories`;

@@ -30,7 +30,6 @@ export const CatalogProductsPage = () => {
   const selectedCount = products?.filter(p => p.selected).length || 0
 
   const handleProductSelect = (productId: number) => {
-    // Toggle selection logic would go here with React Query mutation
     console.log('Selected product:', productId)
   }
 
