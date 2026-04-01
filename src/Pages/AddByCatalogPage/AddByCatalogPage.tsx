@@ -163,50 +163,51 @@ export const AddByCatalogPage = () => {
       <div className="catalog-page">
         <div className="catalog-header">
           <div className="catalog-header-left">
-            <h1>Product Catalog</h1>
+            <h1>Add Product By Catalog</h1>
             <p>Select your vehicle to browse categories</p>
           </div>
-          <button className="btn-cancel">Cancel</button>
         </div>
 
         {showCategories ? (
-          <div className="search-card">
-            <p className="search-card-title">
-              {categoryPath.length > 0 ? (
-                <span className="breadcrumb">
-                  <span className="breadcrumb-link" onClick={() => handleNavigateBack(-1)}>All Categories</span>
-                  {categoryPath.map((cat, index) => (
-                    <span key={cat.id}>
-                      <span className="breadcrumb-separator"> / </span>
-                      {index === categoryPath.length - 1 ? (
-                        <span className="breadcrumb-current">{cat.name}</span>
-                      ) : (
-                        <span className="breadcrumb-link" onClick={() => handleNavigateBack(index)}>{cat.name}</span>
-                      )}
-                    </span>
-                  ))}
-                </span>
-              ) : 'Search Categories'}
-            </p>
-            <form onSubmit={handleCategorySearch}>
-              <div className="search-row search-category-row">
-                <div className="field-group">
-                  <input
-                    type="text"
-                    className="field-input"
-                    value={categorySearch}
-                    onChange={(e) => setCategorySearch(e.target.value)}
-                    placeholder="Enter category name..."
-                  />
+          <div className="search-card compact-search-card">
+            <div className="compact-search-header">
+              <p className="search-card-title">
+                {categoryPath.length > 0 ? (
+                  <span className="breadcrumb">
+                    <span className="breadcrumb-link" onClick={() => handleNavigateBack(-1)}>All Categories</span>
+                    {categoryPath.map((cat, index) => (
+                      <span key={cat.id}>
+                        <span className="breadcrumb-separator"> / </span>
+                        {index === categoryPath.length - 1 ? (
+                          <span className="breadcrumb-current">{cat.name}</span>
+                        ) : (
+                          <span className="breadcrumb-link" onClick={() => handleNavigateBack(index)}>{cat.name}</span>
+                        )}
+                      </span>
+                    ))}
+                  </span>
+                ) : 'Search Categories'}
+              </p>
+              <form onSubmit={handleCategorySearch} className="compact-search-form">
+                <div className="search-row search-category-row">
+                  <div className="field-group">
+                    <input
+                      type="text"
+                      className="field-input"
+                      value={categorySearch}
+                      onChange={(e) => setCategorySearch(e.target.value)}
+                      placeholder="Enter category name..."
+                    />
+                  </div>
+                  <button className="btn-search" type="submit">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                      <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
+                    </svg>
+                    Search
+                  </button>
                 </div>
-                <button className="btn-search" type="submit">
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                    <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
-                  </svg>
-                  Search
-                </button>
-              </div>
-            </form>
+              </form>
+            </div>
           </div>
         ) : (
           <div className="search-card">
@@ -259,7 +260,7 @@ export const AddByCatalogPage = () => {
           <>
             {categoryPath.length === 0 && (
               <>
-                <div className="results-header">
+                <div className="results-header" style={{ marginTop: '0', marginBottom: '16px' }}>
                   <span className="results-title">Categories</span>
                   <div className="results-meta">
                     <span className="badge-count badge-total">{filteredCategories.length} found</span>
@@ -296,93 +297,85 @@ export const AddByCatalogPage = () => {
               </>
             )}
 
-            {categoryPath.length > 0 && filteredCategories.length > 0 && (
-              <div className="subcategories-section">
-                <div className="subcategories-header">
-                  <span className="subcategories-title">Subcategories</span>
-                  <div className="results-meta">
-                    <span className="badge-count badge-total">{filteredCategories.length} found</span>
-                  </div>
-                </div>
-                
-                <div className="categories-swiper-container">
-                  <Swiper
-                    modules={[Navigation, Pagination]}
-                    spaceBetween={16}
-                    slidesPerView={'auto'}
-                    breakpoints={{
-                      320: { slidesPerView: 3, spaceBetween: 10 },
-                      576: { slidesPerView: 4, spaceBetween: 15 },
-                      768: { slidesPerView: 6, spaceBetween: 20 },
-                      1024: { slidesPerView: 8, spaceBetween: 20 },
-                    }}
-                    navigation
-                    pagination={{ clickable: true }}
-                    className="categories-swiper"
-                  >
-                    {filteredCategories.map(category => (
-                      <SwiperSlide key={category.id} style={{ height: 'auto', width: 'auto' }}>
+            {categoryPath.length > 0 && (
+              <div className="catalog-layout">
+                {/* Sidebar - Subcategories */}
+                {filteredCategories.length > 0 && (
+                  <div className="subcategories-sidebar">
+                    <div className="subcategories-sidebar-header">
+                      <span className="subcategories-sidebar-title">Subcategories</span>
+                      <span className="badge-count badge-total">{filteredCategories.length}</span>
+                    </div>
+                    <div className="subcategories-list">
+                      {filteredCategories.map(category => (
                         <div
-                          className="category-circle-card"
+                          key={category.id}
+                          className="subcategory-item"
                           onClick={() => handleCategorySelect(category)}
                         >
-                          <div className="category-circle-img-wrap">
+                          <div className="subcategory-item-img">
                             <img 
                               src={category.logo || PlaceHolderImage} 
                               alt={category.name} 
                               onError={(e) => { e.currentTarget.src = PlaceHolderImage }}
                             />
                           </div>
-                          <div className="category-circle-name">{category.name}</div>
+                          <span className="subcategory-item-name">{category.name}</span>
                         </div>
-                      </SwiperSlide>
-                    ))}
-                  </Swiper>
-                </div>
-              </div>
-            )}
-
-            {categoryPath.length > 0 && categoryPath[categoryPath.length - 1]?.category_digram && (
-              <div className="category-diagram-container">
-                <img 
-                  src={categoryPath[categoryPath.length - 1].category_digram!} 
-                  alt="Category Diagram" 
-                  className="category-diagram-image"
-                />
-              </div>
-            )}
-
-            {currentProducts.length > 0 && (
-              <>
-                <div className="results-header" style={{ marginTop: categoryPath.length > 0 ? '0' : '2rem' }}>
-                  <span className="results-title">Products</span>
-                  <div className="results-meta">
-                    <span className="badge-count badge-total">{currentProducts.length} found</span>
-                  </div>
-                </div>
-                <div className="products-grid">
-                  {currentProducts.map(product => (
-                    <div
-                      key={product.id}
-                      className="product-card"
-                      onClick={() => handleProductSelect(product.id)}
-                    >
-                      <div className="product-img-wrap">
-                        <img 
-                          src={product.image_url || PlaceHolderImage} 
-                          alt={product.name} 
-                          onError={(e) => { e.currentTarget.src = PlaceHolderImage }}
-                        />
-                      </div>
-                      <div className="product-name">{product.name}</div>
-                      <div className="product-brand">{product.sku}</div>
-                      {product.default_sell_price > 0 && (
-                        <div className="product-price">{product.default_sell_price.toFixed(2)} EGP</div>
-                      )}
+                      ))}
                     </div>
-                  ))}
+                  </div>
+                )}
+                
+                {/* Main Area - Diagram + Products */}
+                <div className="products-area">
+                  {categoryPath[categoryPath.length - 1]?.category_digram && (
+                    <div className="category-diagram-container">
+                      <img 
+                        src={categoryPath[categoryPath.length - 1].category_digram!} 
+                        alt="Category Diagram" 
+                        className="category-diagram-image"
+                      />
+                    </div>
+                  )}
+                  
+                  {currentProducts.length > 0 && (
+                    <>
+                      <div className="results-header" style={{ marginTop: '0', marginBottom: '16px' }}>
+                        <span className="results-title">Products</span>
+                        <div className="results-meta">
+                          <span className="badge-count badge-total">{currentProducts.length} found</span>
+                        </div>
+                      </div>
+                      <div className="products-grid">
+                        {currentProducts.map(product => (
+                          <div
+                            key={product.id}
+                            className="product-card"
+                            onClick={() => handleProductSelect(product.id)}
+                          >
+                            <div className="product-img-wrap">
+                              <img 
+                                src={product.image_url || PlaceHolderImage} 
+                                alt={product.name} 
+                                onError={(e) => { e.currentTarget.src = PlaceHolderImage }}
+                              />
+                            </div>
+                            <div className="product-name">{product.name}</div>
+                            <div className="product-brand">{product.sku}</div>
+                          </div>
+                        ))}
+                      </div>
+                    </>
+                  )}
+                  
+                  {currentProducts.length === 0 && (
+                    <div className="empty-state">
+                      <p>No products in this category</p>
+                    </div>
+                  )}
                 </div>
-              </>
+              </div>
             )}
 
             {currentSubcategories.length === 0 && currentProducts.length === 0 && categoryPath.length > 0 && !isLoadingSubcategories && !isLoadingProducts && (

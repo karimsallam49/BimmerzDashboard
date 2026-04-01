@@ -17,13 +17,12 @@
   color: #111827;
 }
 
-.catalog-layout {
+/* .catalog-layout {
   display: flex;
   gap: 16px;
   height: calc(100vh - 80px);
-}
+} */
 
-/* Sidebar Styles */
 .catalog-sidebar {
   width: 280px;
   background: white;
