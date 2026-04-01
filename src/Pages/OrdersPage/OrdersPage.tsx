@@ -26,7 +26,7 @@ interface Order {
 export const OrdersPage = () => {
   const [searchTerm, setSearchTerm] = useState('')
   const [selectedStatus, setSelectedStatus] = useState('')
-  const [selectedOrder, setSelectedOrder] = useState<Order | null>(null)
+  const [selectedOrder] = useState<Order | null>(null)
   const [showDetailsModal, setShowDetailsModal] = useState(false)
   const [orders, _setOrders] = useState<Order[]>([
     { id: '1', orderNumber: 'ORD-2024-001', customerName: 'John Doe', customerEmail: 'john@example.com', orderDate: '2024-03-10', status: 'pending', totalAmount: 245.99, itemCount: 3, paymentMethod: 'Credit Card', shippingAddress: '123 Main St, City, State 12345' },

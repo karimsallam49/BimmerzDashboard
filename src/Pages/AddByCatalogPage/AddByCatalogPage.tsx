@@ -1,15 +1,17 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
+import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { Navigation, Pagination } from 'swiper/modules'
+
 import 'swiper/swiper-bundle.css'
 import PlaceHolderImage from "../../assets/Images/BMW_logo_(white).svg.png"
 import { GetCategoriesEndpoint, GetCarByModelsAPi, ProductsByCategoryEndpoint, SubcategoriesByCategoryEndpoint } from '../../Endpoints/AppEndpoints'
 import type { Category } from '../../DTO/CategoryDTO'
 import type { CatalogProduct, CatalogProductsPagination } from '../../DTO/CatalogProductDTO'
 import type { CarModel } from '../../DTO/CarModelDTO'
+import { addToCart } from '../../store/Cart/cartSlice'
+import type { RootState } from '../../store/store'
 import "./AddBycategory.css"
 
 const fetchCategories = async (): Promise<Category[]> => {
@@ -47,6 +49,9 @@ const getYears = () => {
 
 export const AddByCatalogPage = () => {
   const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const cartItems = useSelector((state: RootState) => state.cart.items)
+  const cartCount = useSelector((state: RootState) => state.cart.totalQuantity)
   const [selectedCar, setSelectedCar] = useState('')
   const [selectedYear, setSelectedYear] = useState('')
   const [showCategories, setShowCategories] = useState(false)
@@ -106,6 +111,8 @@ export const AddByCatalogPage = () => {
   }
 
   const handleCategorySelect = (category: Category) => {
+    console.log('Selected category:', category)
+    console.log('Category diagram:', category.category_digram)
     setCategoryPath(prev => [...prev, category])
     setCategorySearch('')
     setSearchQuery('')
@@ -124,8 +131,18 @@ export const AddByCatalogPage = () => {
     }
   }
 
-  const handleProductSelect = (productId: number) => {
-    navigate(`/catalog/product/${productId}?car=${selectedCar}&year=${selectedYear}`)
+  const handleProductSelect = (product: CatalogProduct) => {
+    dispatch(addToCart({
+      id: product.id,
+      name: product.name,
+      sku: product.sku,
+      image_url: product.image_url,
+      price: product.default_sell_price || 0,
+      quantity: 1,
+      category_id: categoryPath.length > 0 ? categoryPath[categoryPath.length - 1].id : undefined,
+      category_name: categoryPath.length > 0 ? categoryPath[categoryPath.length - 1].name : undefined
+    }))
+    alert(`${product.name} added to cart!`)
   }
 
   const getDisplayCategories = () => {
@@ -165,6 +182,16 @@ export const AddByCatalogPage = () => {
           <div className="catalog-header-left">
             <h1>Add Product By Catalog</h1>
             <p>Select your vehicle to browse categories</p>
+          </div>
+          <div className="cart-icon-container" onClick={() => navigate('/cart')} style={{ cursor: 'pointer' }}>
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#6c63ff" strokeWidth="2">
+              <path d="M9 2L6 7H3L5.5 20H18.5L21 7H18L15 2H9Z"/>
+              <circle cx="9" cy="20" r="1.5" fill="#6c63ff"/>
+              <circle cx="17" cy="20" r="1.5" fill="#6c63ff"/>
+            </svg>
+            {cartCount > 0 && (
+              <span className="cart-badge">{cartCount}</span>
+            )}
           </div>
         </div>
 
@@ -329,13 +356,18 @@ export const AddByCatalogPage = () => {
                 
                 {/* Main Area - Diagram + Products */}
                 <div className="products-area">
-                  {categoryPath[categoryPath.length - 1]?.category_digram && (
+                  {categoryPath[categoryPath.length - 1]?.category_digram ? (
                     <div className="category-diagram-container">
                       <img 
                         src={categoryPath[categoryPath.length - 1].category_digram!} 
                         alt="Category Diagram" 
                         className="category-diagram-image"
+                        onError={(e) => console.error('Failed to load diagram image:', e)}
                       />
+                    </div>
+                  ) : (
+                    <div style={{ padding: '10px', background: '#ffe4e4', borderRadius: '8px', marginBottom: '16px' }}>
+                      No diagram for this category
                     </div>
                   )}
                   
@@ -352,7 +384,7 @@ export const AddByCatalogPage = () => {
                           <div
                             key={product.id}
                             className="product-card"
-                            onClick={() => handleProductSelect(product.id)}
+                            onClick={() => handleProductSelect(product)}
                           >
                             <div className="product-img-wrap">
                               <img 
@@ -363,6 +395,12 @@ export const AddByCatalogPage = () => {
                             </div>
                             <div className="product-name">{product.name}</div>
                             <div className="product-brand">{product.sku}</div>
+                            <button className="add-to-cart-btn" onClick={(e) => {
+                              e.stopPropagation()
+                              handleProductSelect(product)
+                            }}>
+                              Add to Cart
+                            </button>
                           </div>
                         ))}
                       </div>

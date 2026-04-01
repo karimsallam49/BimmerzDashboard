@@ -45,7 +45,7 @@ export const AddProductModal = ({ show, product, onClose, onSubmit, vendorId }: 
   const [warrantyId, setWarrantyId] = useState('')
   const [shippingInfo, setShippingInfo] = useState('')
   const [returnPolicy, setReturnPolicy] = useState('')
-  const [countryOfOrigin, setCountryOfOrigin] = useState('')
+  const [, setCountryOfOrigin] = useState('')
   const [countryId, setCountryId] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
   
