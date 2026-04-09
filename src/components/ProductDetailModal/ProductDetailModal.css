@@ -1,0 +1,391 @@
+/* Product Detail Modal - Enhanced Noon Theme */
+
+.product-detail-modal .modal-content {
+  border: none;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+  font-family: 'Proxima Nova', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.product-detail-modal .modal-header {
+  border-bottom: none;
+  padding: 20px 28px;
+  background: linear-gradient(135deg, #ffffff 0%, #fafbfc 100%);
+}
+
+.product-detail-modal .modal-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #404553;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.product-detail-modal .modal-title::before {
+  content: '';
+  width: 4px;
+  height: 20px;
+  background: #fce000;
+  border-radius: 2px;
+}
+
+.product-detail-modal .modal-header .btn-close {
+  opacity: 0.4;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.product-detail-modal .modal-header .btn-close:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.product-detail-modal .modal-body {
+  padding: 0 28px 24px;
+  background-color: #ffffff;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+/* Scrollbar Styling */
+.product-detail-modal .modal-body::-webkit-scrollbar {
+  width: 6px;
+}
+
+.product-detail-modal .modal-body::-webkit-scrollbar-track {
+  background: #f2f2f5;
+  border-radius: 3px;
+}
+
+.product-detail-modal .modal-body::-webkit-scrollbar-thumb {
+  background: #c4c6d0;
+  border-radius: 3px;
+}
+
+.product-detail-modal .modal-body::-webkit-scrollbar-thumb:hover {
+  background: #a0a3b1;
+}
+
+.product-detail-modal .modal-footer {
+  border-top: 1px solid #f2f2f5;
+  padding: 16px 24px;
+  background-color: #ffffff;
+}
+
+/* Product Header */
+.product-header {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 24px;
+  padding: 24px;
+  background: linear-gradient(135deg, #f8faff 0%, #ffffff 100%);
+  border-radius: 16px;
+  border: 1px solid #e8ecf4;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.product-main-image {
+  flex-shrink: 0;
+  width: 160px;
+  height: 160px;
+  background: #ffffff;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #e8ecf4;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease;
+}
+
+.product-main-image:hover {
+  transform: scale(1.02);
+}
+
+.product-main-image img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.product-title-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+}
+
+.product-name {
+  font-size: 24px;
+  font-weight: 800;
+  color: #1a1d26;
+  margin: 0;
+  line-height: 1.3;
+  letter-spacing: -0.3px;
+}
+
+.product-badges {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.sku-badge {
+  background-color: #eef0f5 !important;
+  color: #5c6170 !important;
+  font-weight: 600;
+  font-size: 12px;
+  padding: 8px 14px;
+  border-radius: 20px;
+  border: 1px solid #dde1eb;
+}
+
+/* Condition Status Badge */
+.condition-status-badge {
+  font-size: 11px;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.condition-status-badge.confirmed {
+  background: linear-gradient(135deg, #e6f7ed 0%, #d4f5e4 100%) !important;
+  color: #0d7a4d !important;
+  border: 2px solid #1a8f5c;
+  box-shadow: 0 2px 8px rgba(26, 143, 92, 0.15);
+}
+
+.condition-status-badge.under-review {
+  background: linear-gradient(135deg, #fff8e6 0%, #fff0cc 100%) !important;
+  color: #b38600 !important;
+  border: 2px solid #d4a000;
+  box-shadow: 0 2px 8px rgba(212, 160, 0, 0.15);
+}
+
+/* Section Styling */
+.product-info-section,
+.warranty-section,
+.description-section,
+.vendor-info-section {
+  margin-bottom: 20px;
+  padding: 20px 24px;
+  background: #ffffff;
+  border-radius: 14px;
+  border: 1px solid #e8ecf4;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  transition: box-shadow 0.2s ease;
+}
+
+.product-info-section:hover,
+.warranty-section:hover,
+.description-section:hover,
+.vendor-info-section:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.product-info-section:last-child,
+.warranty-section:last-child,
+.description-section:last-child,
+.vendor-info-section:last-child {
+  margin-bottom: 0;
+}
+
+.section-title {
+  font-size: 13px;
+  font-weight: 800;
+  color: #404553;
+  margin-bottom: 18px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.section-title::before {
+  content: '';
+  width: 3px;
+  height: 16px;
+  background: #3866df;
+  border-radius: 2px;
+}
+
+/* Info Rows */
+.info-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+  padding: 12px 16px;
+  background: #f8faff;
+  border-radius: 10px;
+  border: 1px solid #e8ecf4;
+}
+
+.info-row:last-child {
+  margin-bottom: 10px;
+}
+
+.info-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #8b93a7;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.info-value {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1a1d26;
+}
+
+.info-value.price {
+  color: #0d7a4d;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.stock-badge {
+  font-size: 11px;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-weight: 700;
+}
+
+/* Warranty Card */
+.warranty-card {
+  background: linear-gradient(135deg, #f0f5ff 0%, #e8f0ff 100%);
+  border: 2px solid #dbe5ff;
+  border-radius: 14px;
+  padding: 20px 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.warranty-card::before {
+  content: '🛡️';
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 40px;
+  opacity: 0.1;
+}
+
+.warranty-name {
+  font-size: 16px;
+  font-weight: 800;
+  color: #1a1d26;
+  margin-bottom: 10px;
+  letter-spacing: -0.3px;
+}
+
+.warranty-details {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.warranty-duration {
+  font-size: 14px;
+  font-weight: 700;
+  color: #3866df;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.warranty-duration::before {
+  content: '⏱️';
+  font-size: 12px;
+}
+
+.warranty-desc {
+  font-size: 13px;
+  color: #5c6170;
+  line-height: 1.5;
+}
+
+/* Description Text */
+.description-text {
+  font-size: 15px;
+  color: #404553;
+  line-height: 1.8;
+  background: #f8faff;
+  padding: 20px 24px;
+  border-radius: 12px;
+  border: 1px solid #e8ecf4;
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+/* Close Button */
+.close-btn {
+  background: linear-gradient(135deg, #fce000 0%, #f2d600 100%);
+  color: #1a1d26;
+  border: none;
+  font-weight: 700;
+  padding: 14px 40px;
+  border-radius: 10px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(252, 224, 0, 0.35);
+  letter-spacing: 0.3px;
+}
+
+.close-btn:hover {
+  background: linear-gradient(135deg, #f2d600 0%, #e8cc00 100%);
+  color: #000000;
+  box-shadow: 0 6px 20px rgba(252, 224, 0, 0.45);
+  transform: translateY(-2px);
+}
+
+.close-btn:active {
+  transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .product-detail-modal .modal-body {
+    padding: 0 16px 20px;
+  }
+
+  .product-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .product-main-image {
+    width: 140px;
+    height: 140px;
+  }
+
+  .product-name {
+    font-size: 20px;
+  }
+
+  .product-info-section,
+  .warranty-section,
+  .description-section,
+  .vendor-info-section {
+    padding: 16px 20px;
+  }
+
+  .info-value.price {
+    font-size: 18px;
+  }
+}

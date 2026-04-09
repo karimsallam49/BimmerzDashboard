@@ -150,6 +150,7 @@ export const LoginPage = () => {
                     onBlur={() => setFocused(null)}
                     placeholder="Enter your username"
                     required
+                    style={{padding: '0 2.5rem'}}
                     disabled={isLoading}
                   />
                 </div>
@@ -172,6 +173,7 @@ export const LoginPage = () => {
                     onBlur={() => setFocused(null)}
                     placeholder="Enter your password"
                     required
+                    style={{padding: '0 2.5rem'}}
                     disabled={isLoading}
                   />
                   <button

@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useQuery } from '@tanstack/react-query'
-import { Modal, Button, Form, Spinner } from 'react-bootstrap'
+import { Modal, Button, Form, Spinner, Row, Col, Badge } from 'react-bootstrap'
 import type { Product } from '../../DTO/ProductsDTO'
 import axios from 'axios'
 import { GetAllwarranties, ProductCompatibilityEndpoint, AddCompatibilityEndpoint, GetCountriesEndpoint } from '../../Endpoints/AppEndpoints'
@@ -21,6 +21,7 @@ interface AddProductModalProps {
     shipping_information?: string
     Return_policy?: string
     country_id?: string
+    vendor_roduct_image?: File[]
   }) => Promise<void>
   vendorId: number
 }
@@ -48,7 +49,9 @@ export const AddProductModal = ({ show, product, onClose, onSubmit, vendorId }: 
   const [, setCountryOfOrigin] = useState('')
   const [countryId, setCountryId] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
-  
+  const [selectedImages, setSelectedImages] = useState<File[]>([])
+  const [imagePreviewUrls, setImagePreviewUrls] = useState<string[]>([])
+  const fileInputRef = useRef<HTMLInputElement>(null)
 
   const { data: warranties, isLoading: isLoadingWarranties } = useQuery({
     queryKey: ['vendor-warranties'],
@@ -82,8 +85,31 @@ export const AddProductModal = ({ show, product, onClose, onSubmit, vendorId }: 
       setReturnPolicy('')
       setCountryOfOrigin('')
       setCountryId('')
+      setSelectedImages([])
+      setImagePreviewUrls([])
     }
   }, [product])
+
+  const handleImageSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files
+    if (files) {
+      const newFiles = Array.from(files)
+      setSelectedImages(prev => [...prev, ...newFiles])
+      
+      const newPreviewUrls = newFiles.map(file => URL.createObjectURL(file))
+      setImagePreviewUrls(prev => [...prev, ...newPreviewUrls])
+    }
+  }
+
+  const removeImage = (index: number) => {
+    setSelectedImages(prev => prev.filter((_, i) => i !== index))
+    URL.revokeObjectURL(imagePreviewUrls[index])
+    setImagePreviewUrls(prev => prev.filter((_, i) => i !== index))
+  }
+
+  const triggerFileInput = () => {
+    fileInputRef.current?.click()
+  }
 
   const handleSubmit = async () => {
     if (!product) return
@@ -91,17 +117,17 @@ export const AddProductModal = ({ show, product, onClose, onSubmit, vendorId }: 
 
     try {
 
-      if (compatibility && compatibility.length > 0) {
-        for (const item of compatibility) {
-          await axios.post(AddCompatibilityEndpoint, {
-            product_id: product.id,
-            brand_category_id: item.brand_category_id,
-            model_id: item.model_id,
-            from_year: item.from_year,
-            to_year: item.to_year
-          })
-        }
-      }
+      // if (compatibility && compatibility.length > 0) {
+      //   for (const item of compatibility) {
+      //     await axios.post(AddCompatibilityEndpoint, {
+      //       product_id: product.id,
+      //       brand_category_id: item.brand_category_id,
+      //       model_id: item.model_id,
+      //       from_year: item.from_year,
+      //       to_year: item.to_year
+      //     })
+      //   }
+      // }
 
 
       await onSubmit({
@@ -112,6 +138,7 @@ export const AddProductModal = ({ show, product, onClose, onSubmit, vendorId }: 
         shipping_information: shippingInfo,
         Return_policy: returnPolicy,
         country_id: countryId,
+        vendor_roduct_image: selectedImages.length > 0 ? selectedImages : undefined,
       })
       onClose()
     } catch (err) {
@@ -132,17 +159,173 @@ export const AddProductModal = ({ show, product, onClose, onSubmit, vendorId }: 
       <Modal.Body>
         {product && (
           <Form>
-            <div className="form-row">
-              <Form.Group className="form-group">
-                <Form.Label>Product Name</Form.Label>
-                <Form.Control type="text" value={product.name} disabled />
-              </Form.Group>
+ 
+            <Form.Group className="mb-4">
+              <Form.Label className="fw-bold">Product Images</Form.Label>
+              <div className="product-images-container">
+         
+                <div className="main-image-wrapper mb-3">
+                  <img
+                    src={product.image_url || '/default-product.png'}
+                    alt={product.name}
+                    className="main-product-image"
+                    onError={(e) => {
+                      (e.target as HTMLImageElement).src = '/default-product.png';
+                    }}
+                  />
+                </div>
+                
+                {product.gallery_images_urls && product.gallery_images_urls.length > 0 && (
+                  <div className="gallery-images-grid">
+                    {product.gallery_images_urls.map((imgUrl, index) => (
+                      <div key={index} className="gallery-image-wrapper">
+                        <img
+                          src={imgUrl}
+                          alt={`${product.name} - ${index + 1}`}
+                          className="gallery-image"
+                          onError={(e) => {
+                            (e.target as HTMLImageElement).style.display = 'none';
+                          }}
+                        />
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </Form.Group>
 
-              <Form.Group className="form-group">
-                <Form.Label>SKU</Form.Label>
-                <Form.Control type="text" value={product.sku} disabled />
+        
+            <Form.Group className="mb-4">
+              <Form.Label className="fw-bold">Product Information</Form.Label>
+              <div className="product-info-grid">
+                <Row>
+                  <Col md={6}>
+                    <div className="info-item">
+                      <span className="info-label">Product Name:</span>
+                      <span className="info-value">{product.name}</span>
+                    </div>
+                  </Col>
+                  <Col md={6}>
+                    <div className="info-item">
+                      <span className="info-label">SKU:</span>
+                      <span className="info-value">{product.sku}</span>
+                    </div>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col md={6}>
+                    <div className="info-item">
+                      <span className="info-label">Brand:</span>
+                      <span className="info-value">
+                        {product.brand?.name || 'N/A'}
+                      </span>
+                    </div>
+                  </Col>
+                  <Col md={6}>
+                    <div className="info-item">
+                      <span className="info-label">Category:</span>
+                      <span className="info-value">
+                        {product.category?.name || 'N/A'}
+                      </span>
+                    </div>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col md={6}>
+                    <div className="info-item">
+                      <span className="info-label">Unit:</span>
+                      <span className="info-value">
+                        {product.unit?.actual_name || 'N/A'}
+                      </span>
+                    </div>
+                  </Col>
+                  <Col md={6}>
+                    <div className="info-item">
+                      <span className="info-label">Barcode Type:</span>
+                      <span className="info-value">{product.barcode_type}</span>
+                    </div>
+                  </Col>
+                </Row>
+                {product.product_condition && (
+                  <Row>
+                    <Col md={6}>
+                      <div className="info-item">
+                        <span className="info-label">Condition:</span>
+                        <Badge bg="info">{product.product_condition}</Badge>
+                      </div>
+                    </Col>
+                  </Row>
+                )}
+              </div>
+            </Form.Group>
+
+            {product.product_description && (
+              <Form.Group className="mb-4">
+                <Form.Label className="fw-bold">Description</Form.Label>
+                <div className="product-description">
+                  {product.product_description}
+                </div>
               </Form.Group>
-            </div>
+            )}
+
+            {product.product_specifications && (
+              <Form.Group className="mb-4">
+                <Form.Label className="fw-bold">Specifications</Form.Label>
+                <div className="product-specifications">
+                  {product.product_specifications}
+                </div>
+              </Form.Group>
+            )}
+
+            {product.key_features && (
+              <Form.Group className="mb-4">
+                <Form.Label className="fw-bold">Key Features</Form.Label>
+                <div className="key-features">
+                  {product.key_features}
+                </div>
+              </Form.Group>
+            )}
+
+            {/* Image Upload Section */}
+            <Form.Group className="mb-4">
+              <Form.Label className="fw-bold">Upload Product Images</Form.Label>
+              <div className="image-upload-section">
+                <input
+                  type="file"
+                  ref={fileInputRef}
+                  onChange={handleImageSelect}
+                  accept="image/*"
+                  multiple
+                  style={{ display: 'none' }}
+                />
+                <Button
+                  variant="outline-primary"
+                  onClick={triggerFileInput}
+                  className="upload-btn"
+                >
+                  <i className="bi bi-camera-fill me-2"></i>
+                  Add Images
+                </Button>
+                
+                {/* Selected Images Preview */}
+                {(imagePreviewUrls.length > 0 || selectedImages.length > 0) && (
+                  <div className="selected-images-grid mt-3">
+                    {imagePreviewUrls.map((url, index) => (
+                      <div key={index} className="selected-image-wrapper">
+                        <img src={url} alt={`Selected ${index + 1}`} className="selected-image" />
+                        <button
+                          type="button"
+                          className="remove-image-btn"
+                          onClick={() => removeImage(index)}
+                        >
+                          <i className="bi bi-x-circle-fill"></i>
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </Form.Group>
 
             <div className="form-row">
               <Form.Group className="form-group">

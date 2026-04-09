@@ -9,6 +9,7 @@ import type { CarModel } from '../../DTO/CarModelDTO'
 import type { Column } from '../../components'
 import { useAppSelector } from '../../hooks/hooks'
 import { useProductFilters } from '../../hooks/useProductFilters'
+import { ProductDetailModal } from '../../components/ProductDetailModal/ProductDetailModal'
 import './CatalogPage.css'
 
 const fetchVendorProducts = async (filters: Record<string, any> = {}, supplierId: number = 0): Promise<VendorProduct[]> => {
@@ -42,6 +43,9 @@ export const CatalogPage = () => {
     page: 1,
     per_page: 15,
   })
+
+  const [selectedProduct, setSelectedProduct] = useState<VendorProduct | null>(null)
+  const [showDetailModal, setShowDetailModal] = useState(false)
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -100,22 +104,20 @@ console.log(pagination);
     { key: 'name', header: 'Product Name', render: (p) => <span className="fw-bold">{p.name}</span> },
     { key: 'sku', header: 'SKU' },
     { key: 'vendor_product_price', header: 'Price', render: (p) => `${p.vendor_product_price} EGP` },
-    { 
-      key: 'product_condition', 
-      header: 'Condition', 
+    {
+      key: 'product_condition',
+      header: 'Condition',
       render: (p) => {
-        let cond = p.product_condition || 'Pending';
-        // Display InReview as UnderReview
-        if (cond.toLowerCase() === 'inreview' || cond.toLowerCase() === 'in review' || cond.toLowerCase() === 'in_review') {
-          cond = 'UnderReview';
-        }
-        
+        const cond = p.product_condition || 'Pending';
+        // Show UnderReview for anything other than confirmed
+        const displayCond = cond.toLowerCase() === 'confirmed' ? 'Confirmed' : 'UnderReview';
+
         return (
-          <span className={`condition-badge ${getConditionStyle(cond)}`}>
-            {cond}
+          <span className={`condition-badge ${getConditionStyle(displayCond)}`}>
+            {displayCond}
           </span>
         );
-      } 
+      }
     },
   ]
 
@@ -132,7 +134,13 @@ console.log(pagination);
   }
 
   const handleRowClick = (vendorProduct: VendorProduct) => {
-    console.log('Clicked vendor product:', vendorProduct)
+    setSelectedProduct(vendorProduct)
+    setShowDetailModal(true)
+  }
+
+  const handleCloseDetailModal = () => {
+    setShowDetailModal(false)
+    setSelectedProduct(null)
   }
 
 
@@ -161,8 +169,8 @@ console.log(pagination);
       {!isLoading && !isError && (
         <>
           <CardContainer>
-            <DataTable 
-              data={vendorProducts} 
+            <DataTable
+              data={vendorProducts}
               columns={columns}
               keyExtractor={(p) => p.id.toString()}
               onRowClick={handleRowClick}
@@ -170,6 +178,12 @@ console.log(pagination);
               emptyIcon="bi-box"
             />
           </CardContainer>
+
+          <ProductDetailModal
+            show={showDetailModal}
+            product={selectedProduct}
+            onClose={handleCloseDetailModal}
+          />
           
           <div className="d-flex justify-content-between align-items-center mt-3 px-3">
             <div className="text-muted">

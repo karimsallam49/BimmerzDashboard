@@ -10,3 +10,4 @@ export { EmptyState } from './EmptyState/EmptyState';
 export { KpiCard, KpiPanel } from './KpiCard/KpiCard';
 export { EditModal, type FieldConfig } from './EditModal/EditModal';
 export { ProductSelector, type SelectableProduct, type AdditionalField } from './ProductSelector/ProductSelector';
+export { ProductDetailModal } from './ProductDetailModal/ProductDetailModal';

@@ -183,16 +183,6 @@ export const AddByCatalogPage = () => {
             <h1>Add Product By Catalog</h1>
             <p>Select your vehicle to browse categories</p>
           </div>
-          <div className="cart-icon-container" onClick={() => navigate('/cart')} style={{ cursor: 'pointer' }}>
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#6c63ff" strokeWidth="2">
-              <path d="M9 2L6 7H3L5.5 20H18.5L21 7H18L15 2H9Z"/>
-              <circle cx="9" cy="20" r="1.5" fill="#6c63ff"/>
-              <circle cx="17" cy="20" r="1.5" fill="#6c63ff"/>
-            </svg>
-            {cartCount > 0 && (
-              <span className="cart-badge">{cartCount}</span>
-            )}
-          </div>
         </div>
 
         {showCategories ? (
@@ -395,12 +385,6 @@ export const AddByCatalogPage = () => {
                             </div>
                             <div className="product-name">{product.name}</div>
                             <div className="product-brand">{product.sku}</div>
-                            <button className="add-to-cart-btn" onClick={(e) => {
-                              e.stopPropagation()
-                              handleProductSelect(product)
-                            }}>
-                              Add to Cart
-                            </button>
                           </div>
                         ))}
                       </div>

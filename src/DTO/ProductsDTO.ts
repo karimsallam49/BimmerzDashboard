@@ -97,6 +97,7 @@ export interface Product {
   workshop_ref?: number | null;
   serviceHours?: number | null;
   image_url: string;
+  gallery_images_urls?: string[];
   brand?: Brand | null;
   unit?: Unit | null;
   category?: Category | null;
